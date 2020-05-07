@@ -15,6 +15,15 @@ import { map, filter } from 'rxjs/operators'
         </div>
       </div>
     </section>
+    <div>    
+    <section class="hero is-info">
+     
+          <a routerLink="/categories/create">Create new Category</a>
+     
+    </section>
+    <div>
+    
+    </div>
     <section class="section">
       <div *ngIf="categories">
           <div *ngFor="let cat of categories">
