@@ -1,3 +1,5 @@
+import { CategoryUpdateComponent } from './category-update/category-update.component';
+import { CategoryCreateComponent } from './category-create/category-create.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CategoryListComponent } from './category-list/category-list.component';
@@ -9,8 +11,16 @@ var routes: Routes = [
     component: CategoryListComponent
   },
   {
+    path: 'create',
+    component: CategoryCreateComponent
+  },
+  {
     path: ':cat_id',
     component: CategorySingleComponent
+  },
+  {
+    path: ':cat_id/update',
+    component: CategoryUpdateComponent
   }
 ]
 

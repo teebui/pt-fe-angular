@@ -7,22 +7,22 @@ import { ItemUpdateComponent } from './item-update/item-update.component';
 import { ItemCreateComponent } from './item-create/item-create.component';
 
 var routes: Routes = [
+  // {
+  //   path: '',
+  //   component: ItemListComponent
+  // },
   {
-    path: '',
-    component: ItemListComponent
+    path: 'create',
+    component: ItemCreateComponent
   },
-  {
-    path: ':item-id',
-    component: ItemViewComponent
-  },
+  // {
+  //   path: ':item-id',
+  //   component: ItemViewComponent
+  // },
   {
     path: ':item-id/update',
     component: ItemUpdateComponent
   },
-  {
-    path: 'create',
-    component: ItemCreateComponent
-  }
 ]
 
 @NgModule({
