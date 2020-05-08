@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/categories/category.service'
-import { map, filter } from 'rxjs/operators'
+import { ICategory } from '../category';
 
 
 @Component({
@@ -29,9 +29,9 @@ import { map, filter } from 'rxjs/operators'
           <div *ngFor="let cat of categories">
             <div class="container">
               <h2 class="title">
-                <a routerLink="/categories/{{ cat.id }}">{{ cat.id }}</a></h2>
+                <a routerLink="/categories/{{ cat.categoryId }}">{{ cat.name }}</a></h2>
               <h3 class="subtitle">
-              {{ cat.title }}
+              {{ cat.description }}
               </h3>
             </div>
           </div>
@@ -42,12 +42,12 @@ import { map, filter } from 'rxjs/operators'
   ]
 })
 export class CategoryListComponent implements OnInit {
-  categories
+  categories: ICategory[]
 
   constructor(private catService: CategoryService) { }
 
   ngOnInit(): void {
-    this.categories = this.catService.getCategories()
+    this.catService.getCategories()
       .subscribe(data => this.categories = data)
   }
 }
