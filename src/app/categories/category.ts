@@ -1,9 +1,14 @@
 import { IItem } from '../items/item';
 
-export interface ICategory {
-    categoryId: number,
+
+export interface IBaseCategory {
     name: string,
     description: string,
+}
+
+export interface ICategory extends IBaseCategory {
+    categoryId: number,
+
     itemsCount: number
 }
 
