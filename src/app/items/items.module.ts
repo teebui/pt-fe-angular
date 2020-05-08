@@ -5,6 +5,7 @@ import { ItemListComponent } from './item-list/item-list.component';
 import { ItemCreateComponent } from './item-create/item-create.component';
 import { ItemViewComponent } from './item-view/item-view.component';
 import { ItemUpdateComponent } from './item-update/item-update.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,7 +13,8 @@ import { ItemUpdateComponent } from './item-update/item-update.component';
   declarations: [ItemListComponent, ItemCreateComponent, ItemViewComponent, ItemUpdateComponent],
   imports: [
     CommonModule,
-    ItemsRoutingModule
+    ItemsRoutingModule,
+    FormsModule
   ]
 })
 export class ItemsModule { }
