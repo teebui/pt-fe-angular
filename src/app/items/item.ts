@@ -1,10 +1,10 @@
-import { Category } from '../categories/category';
+import { ICategory } from '../categories/category';
 
-export interface Item {
+export interface IItem {
     id: number,
     name: string,
     description: string,
     purchaseDate: Date,
     purchasePrice?: number,
-    category: Category[]
+    category: ICategory
 }

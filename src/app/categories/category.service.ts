@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs' 
-import { ICategory } from './category';
+import { ICategory, ICategoryWithItems } from './category';
 
 @Injectable({
   providedIn: 'root'
@@ -30,9 +30,9 @@ export class CategoryService {
     // );
   }
 
-  getCategory(catId: number): Observable<ICategory> {
+  getCategory(catId: number): Observable<ICategoryWithItems> {
     // return { cat_id: 1, name: "Hello world", desc: "just a name" }
-    return this.http.get<ICategory>(`${this.url}/categories/${catId}`)
+    return this.http.get<ICategoryWithItems>(`${this.url}/categories/${catId}/items`)
   }
 
 }

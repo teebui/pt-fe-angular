@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { IItem } from './item';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,11 +9,11 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class ItemService {
-  baseUrl = 'https://jsonplaceholder.typicode.com'
+  private url: string = 'https://localhost:5001/api'
 
   constructor(private http: HttpClient) { }
 
-  getItemByCategory(categoryId: string) {
-    return this.http.get(`${this.baseUrl}/albums/${categoryId}/photos`)
+  getItemsByCategory(catId: number): Observable<IItem[]> {
+    return this.http.get<IItem[]>(`${this.url}/categories/${catId}/items`)
   }
 }
