@@ -65,7 +65,7 @@ import { ItemService } from '../item.service';
 
 export class ItemCreateComponent implements OnInit {
   name: string
-  descripion?: string
+  description?: string
   price?: number
   purchaseDate: Date = new Date();
   categoryId: number = 1
@@ -80,7 +80,7 @@ export class ItemCreateComponent implements OnInit {
   submitForm(): void {
     let item: INewItem = {
       name: this.name,
-      description: this.descripion,
+      description: this.description,
       purchasePrice: this.price,
       purchaseDate: this.purchaseDate,
       categoryId: this.categoryId
