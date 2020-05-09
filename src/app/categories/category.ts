@@ -7,7 +7,7 @@ export interface IBaseCategory {
 }
 
 export interface ICategory extends IBaseCategory {
-    categoryId: number,
+    Id: number,
     itemsCount: number
 }
 

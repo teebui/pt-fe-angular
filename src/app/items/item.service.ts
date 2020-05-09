@@ -11,19 +11,19 @@ import { catchError, tap } from 'rxjs/operators';
 @Injectable()
 export class ItemService {
   private url: string = 'https://localhost:5001/api'
-  headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
-  httpOptions = {
+  private headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
+  private httpOptions = {
     headers: this.headers
   };
 
   constructor(private http: HttpClient) { }
 
-  getItemsByCategory(catId: number): Observable<IItem[]> {
-    return this.http.get<IItem[]>(`${this.url}/categories/${catId}/items`)
-  }
+  // getItemsByCategory(catId: number): Observable<IItem[]> {
+  //   return this.http.get<IItem[]>(`${this.url}/categories/${catId}/items`)
+  // }
 
   createItem(item: INewItem): Observable<INewItem> {
-    return this.http.post<INewItem>(`${this.url}/items`, item)
+    return this.http.post<INewItem>(`${this.url}/items`, item, this.httpOptions)
       .pipe(
         tap(data => console.log(data)),
         catchError(this.handleError))
@@ -32,6 +32,10 @@ export class ItemService {
   private handleError(error: any) {
     console.error(error);
     return throwError(error);
+  }
+
+  getAllItems(): Observable<IItem[]> {
+    return this.http.get<IItem[]>(`${this.url}/items`)
   }
 
 }
