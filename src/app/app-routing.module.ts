@@ -3,22 +3,34 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CategoriesModule } from './categories/categories.module';
 import { ItemsModule } from './items/items.module';
+import { AuthGuard } from './core/helpers/auth.guard';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
     path: '', 
     component: HomeComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'categories',
-    loadChildren: () => CategoriesModule
+    loadChildren: () => CategoriesModule,
+    canActivate: [AuthGuard]
   },
   {
     path: 'items',
-    loadChildren: () => ItemsModule
-  }
-];
+    loadChildren: () => ItemsModule,
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: '**',
+    redirectTo: '' }
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

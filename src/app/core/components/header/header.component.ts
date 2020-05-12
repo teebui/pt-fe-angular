@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { AuthenticationService } from '@app/services/authentication.service'
+import { User } from '@app/models/user'
 
 @Component({
   selector: 'app-header',
@@ -17,6 +20,7 @@ import { Component, OnInit } from '@angular/core';
         <a class="navbar-item" routerLink="/">Home</a>
         <a class="navbar-item" routerLink="/categories">Categories</a>
         <a class="navbar-item" routerLink="/items">Items</a>
+        <a *ngIf="currentUser" class="navbar-item nav-link" (click)="logout()">[Logout]</a>
       </div>
     </div>
   </div>            
@@ -24,9 +28,21 @@ import { Component, OnInit } from '@angular/core';
   styles: [],
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  currentUser: User
 
   ngOnInit(): void { }
+
+
+    constructor(
+        private router: Router,
+        private authenticationService: AuthenticationService
+    ) {
+        this.authenticationService.currentUser.subscribe(x => this.currentUser = x)
+    }
+
+    logout() {
+        this.authenticationService.logout()
+        this.router.navigate(['/login'])
+    }
 
 }
